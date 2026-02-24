@@ -1,0 +1,12 @@
+{
+  "name": "port",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "@ai-sdk/google": "^1.0.20",
+    "ai": "^4.0.34"
+  }
+}

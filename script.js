@@ -80,4 +80,69 @@ onReady(() => {
       });
     });
   }
+
+  // Hero chat assistant
+  const hero = document.getElementById('hero');
+  const chatForm = document.getElementById('chatForm');
+  const chatInput = document.getElementById('chatInput');
+  const chatMessages = document.getElementById('chatMessages');
+  const chatStatus = document.getElementById('chatStatus');
+
+  const appendMessage = (text, sender = 'bot') => {
+    if (!chatMessages) return null;
+    const p = document.createElement('p');
+    p.className = `message ${sender}`;
+    p.textContent = text;
+    chatMessages.appendChild(p);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    return p;
+  };
+
+  if (chatForm && chatInput && chatMessages && chatStatus && hero) {
+    chatForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const message = chatInput.value.trim();
+      if (!message) return;
+
+      appendMessage(message, 'user');
+      chatInput.value = '';
+      chatStatus.textContent = 'Dennis AI is thinking...';
+      hero.classList.add('thinking');
+
+      const botMessage = appendMessage('', 'bot');
+
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message })
+        });
+
+        if (!response.ok || !response.body) {
+          throw new Error('Chat endpoint unavailable.');
+        }
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let accumulated = '';
+
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          accumulated += decoder.decode(value, { stream: true });
+          if (botMessage) botMessage.textContent = accumulated;
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        chatStatus.textContent = 'Ready for your next question.';
+      } catch (error) {
+        if (botMessage) {
+          botMessage.textContent = 'I could not reach the assistant endpoint. Please try again in a moment.';
+        }
+        chatStatus.textContent = error instanceof Error ? error.message : 'Chat failed.';
+      } finally {
+        hero.classList.remove('thinking');
+      }
+    });
+  }
 });

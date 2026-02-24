@@ -17,6 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/png" href="Images/logo.png" />
     <link rel="apple-touch-icon" href="Images/logo.png" />
@@ -45,13 +46,27 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero">
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="container hero-inner reveal-up">
         <h1 class="hero-title">Hi, I’m <span class="accent">Dennis</span> -<br />Software Engineer, AI Specialist & Data Analyst</h1>
         <p class="hero-sub">
           <span class="typing" data-text='I build scalable apps, intelligent AI systems, and data-driven insights that solve real-world problems.'></span>
         </p>
+
+        <div class="hero-chat-shell mx-auto mt-8 w-full max-w-3xl rounded-3xl border border-blue-100/90 bg-white/85 p-4 shadow-2xl backdrop-blur-xl transition-all">
+          <div id="chatMessages" class="chat-messages h-40 overflow-y-auto rounded-2xl bg-blue-50/40 p-4 text-left text-sm text-slate-700">
+            <p class="message bot">👋 Ask me anything about Dennis’s engineering, AI, cloud, or data projects.</p>
+          </div>
+          <form id="chatForm" class="mt-3 flex items-center gap-2 rounded-2xl border border-slate-200 bg-white p-2 shadow-sm">
+            <button type="button" aria-label="Attach" class="rounded-full p-2 text-slate-500 transition hover:bg-slate-100">📎</button>
+            <button type="button" aria-label="Voice" class="rounded-full p-2 text-slate-500 transition hover:bg-slate-100">🎤</button>
+            <input id="chatInput" name="message" type="text" required placeholder="Search or chat with Dennis AI assistant..." class="flex-1 border-0 bg-transparent px-2 py-1 font-medium text-slate-700 placeholder:text-slate-400 focus:outline-none" />
+            <button type="submit" class="rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700">Send</button>
+          </form>
+          <p id="chatStatus" class="mt-2 px-1 text-left text-xs text-slate-500"></p>
+        </div>
+
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#projects">View Projects</a>
           <a class="btn btn-ghost" href="#contact">Get In Touch</a>
@@ -259,25 +274,25 @@
           <div class="skill-card reveal-up">
             <h3>AI/ML</h3>
             <ul>
-              <li>TensorFlow</li><li>PyTorch</li><li>Scikit-learn</li><li>OpenAI API</li>
+              <li>TensorFlow</li><li>LangChain</li><li>OpenAI API</li>
+            </ul>
+          </div>
+          <div class="skill-card reveal-up">
+            <h3>Data</h3>
+            <ul>
+              <li>Power BI</li><li>Pandas</li><li>MySQL</li>
             </ul>
           </div>
           <div class="skill-card reveal-up">
             <h3>Cloud</h3>
             <ul>
-              <li>AWS</li><li>Docker</li><li>CI/CD</li>
+              <li>AWS</li><li>Docker</li><li>Vercel</li>
             </ul>
           </div>
           <div class="skill-card reveal-up">
-            <h3>Data Analytics</h3>
+            <h3>Automation</h3>
             <ul>
-              <li>SQL</li><li>R</li><li>Pandas</li><li>Power BI</li><li>Tableau</li>
-            </ul>
-          </div>
-          <div class="skill-card reveal-up">
-            <h3>Tools</h3>
-            <ul>
-              <li>Git</li><li>Figma</li><li>Firebase</li><li>M‑Pesa APIs</li><li>n8n</li>
+              <li>n8n</li><li>CI/CD</li><li>API Integrations</li>
             </ul>
           </div>
         </div>
@@ -286,62 +301,40 @@
 
     <!-- Contact Section -->
     <section class="section" id="contact">
-      <div class="container">
-        <h2 class="section-title reveal-up">Contact</h2>
-        <div class="contact-grid">
-          <div class="contact-text reveal-up">
-            <p>Have a project in mind or want to collaborate? Let’s build something great.</p>
-            <ul class="contact-list">
-              <li>
-                <span class="contact-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6.5l7.2 5.4c.5.4 1.1.4 1.6 0L20 6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.6"/></svg>
-                </span>
-                <a href="mailto:denniskinuthia247@gmail.com">denniskinuthia247@gmail.com</a>
-              </li>
-              <li>
-                <span class="contact-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 19c-4.5-1.5-6-6-6-10 2 1 4 1 5 0C8 6 9 4 12 4s4 2 4 5c1 1 3 1 5 0 0 4-1.5 8.5-6 10-.5-1.5-1.5-2-3-2s-2.5.5-3 2z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                <a href="https://github.com/DennisN7" target="_blank" rel="noreferrer">GitHub</a>
-              </li>
-              <li>
-                <span class="contact-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M7 9h10M7 13h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-                </span>
-                <a href="https://www.behance.net/dennisngugi1" target="_blank" rel="noreferrer">Behance</a>
-              </li>
-              <li>
-                <span class="contact-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s7-5.1 7-11.3A7 7 0 0 0 5 9.7C5 15.9 12 21 12 21z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                Nairobi, Kenya
-              </li>
-              <li>
-                <span class="contact-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.5 3h2A2.5 2.5 0 0 1 11 5.5v1A2.5 2.5 0 0 1 8.5 9h0A13 13 0 0 0 15 15.5h0A2.5 2.5 0 0 1 17.5 18h1A2.5 2.5 0 0 1 21 20.5v.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                <a href="tel:+254759581774">+254 759 58 17 74</a>
-              </li>
-            </ul>
-          </div>
-          <form class="contact-form reveal-up" action="#" method="post" onsubmit="return false;">
-            <div class="field"><label for="name">Name</label><input id="name" type="text" placeholder="Your name" required /></div>
-            <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="you@example.com" required /></div>
-            <div class="field"><label for="message">Message</label><textarea id="message" rows="4" placeholder="Tell me about your project" required></textarea></div>
-            <button class="btn btn-primary" type="submit">Send Message</button>
-          </form>
+      <div class="container contact-grid">
+        <div class="reveal-up">
+          <h2 class="section-title">Let’s Build Something Great</h2>
+          <p>I’m open to freelance work, collaborations, and full-time opportunities in software, AI, and data.</p>
+          <ul class="contact-list">
+            <li><span class="contact-icon">✉️</span><a href="mailto:denniskinuthia247@gmail.com">denniskinuthia247@gmail.com</a></li>
+            <li><span class="contact-icon">💼</span><a href="https://www.linkedin.com/in/dennis-ngugi-4a6506275/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+            <li><span class="contact-icon">💻</span><a href="https://github.com/Denniskinuthia247" target="_blank" rel="noreferrer">GitHub</a></li>
+          </ul>
         </div>
+        <form class="contact-form reveal-up" action="https://formspree.io/f/xkgjkkng" method="POST">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Send Message</button>
+        </form>
       </div>
     </section>
 
     <footer class="footer">
       <div class="container">
-        <p>© <span id="year"></span> Dennis Ngugi. All rights reserved.</p>
+        <small>© <span id="year"></span> Dennis Ngugi. Built with clarity, speed, and purpose.</small>
       </div>
     </footer>
 
     <script src="script.js"></script>
   </body>
-  </html>
-
-
+</html>
